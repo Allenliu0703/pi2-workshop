@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<head>
+<title>Weather Forecast</title>
+</head>
+<body>
+<h1>Weather Forecast</h1>
+The weather of {{city_name}} is: <br>
+
+{% set day_num=1 %}
+{% for day in forecast %}
+Day: {{day_num}} <br>
+{{day['weather'][0]['description']}} <br>
+Cloud Cover :  {{day['clouds']}} <br>
+Temp Min : {{round(day['temp']['min']-273.15, 1)}} degrees <br>
+Temp Max : {{round(day['temp']['max']-273.15, 1)}} degrees C <br>
+Humidity : {{ day['humidity']}} % <br>
+Wind Speed :  {{day['speed']}} m/s <br>
+{% set day_num = day_num+1%}
+{%end%}
+</body>
